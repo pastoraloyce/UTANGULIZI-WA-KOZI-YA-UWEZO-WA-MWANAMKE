@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="sw" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utanglizi wa Kozi: Uwezo wa Mwanamke - Pastor Aloyce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f172a', // Deep Blue/Slate
+                        darkCard: '#1e293b',
+                        accentTeal: '#2dd4bf',
+                        softCyan: '#22d3ee',
+                        softWhite: '#f8fafc',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Styles for Transitions */
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-bar {
+            height: 4px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+        /* Font Classes */
+        .font-serif { font-family: Georgia, serif; }
+        .font-sans { font-family: ui-sans-serif, system-ui, sans-serif; }
+        .font-tnr { font-family: 'Times New Roman', Times, serif; }
+        .font-mono { font-family: ui-monospace, SFMono-Regular, monospace; }
+    </style>
+</head>
+<body class="bg-softWhite text-slate-800 dark:bg-darkBg dark:text-slate-200 font-sans antialiased">
+
+    <div class="progress-container bg-slate-200 dark:bg-slate-800">
+        <div class="progress-bar bg-teal-500 dark:bg-accentTeal" id="progressBar"></div>
+    </div>
+
+    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-darkBg/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 py-3">
+        <div class="container mx-auto px-4 flex flex-wrap justify-between items-center gap-4">
+            <div class="font-bold text-teal-600 dark:text-accentTeal text-xl tracking-tight">Makala.</div>
+
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg p-1">
+                    <button onclick="changeFontSize('plus')" class="px-3 py-1 hover:bg-white dark:hover:bg-slate-700 rounded transition" title="Increase font">A+</button>
+                    <button onclick="changeFontSize('minus')" class="px-3 py-1 hover:bg-white dark:hover:bg-slate-700 rounded transition" title="Decrease font">A-</button>
+                </div>
+
+                <select id="fontFamily" onchange="changeFont(this.value)" class="bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm p-2 focus:ring-2 focus:ring-teal-500 outline-none">
+                    <option value="font-sans">Sans-Serif</option>
+                    <option value="font-serif">Serif</option>
+                    <option value="font-tnr">Times New Roman</option>
+                    <option value="font-mono">Monospace</option>
+                </select>
+
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:text-teal-500 transition-colors">
+                    <svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
+                    <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container mx-auto px-4 pt-16 pb-12 text-center max-w-4xl">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-6 text-slate-900 dark:text-white leading-tight">
+            UTANGULIZI WA KOZI YA UWEZO WA MWANAMKE
+        </h1>
+        <div class="flex items-center justify-center space-x-3 mb-8 text-slate-500 dark:text-slate-400 font-medium">
+            <span class="text-teal-600 dark:text-accentTeal">Na Pastor Aloyce</span>
+            <span>•</span>
+            <span>Aprili 21, 2026</span>
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-2xl bg-slate-200 dark:bg-darkCard aspect-video">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=1200" alt="Mwanamke Jasiri" class="w-full h-full object-cover">
+        </div>
+    </header>
+
+    <main id="articleContent" class="container mx-auto px-4 pb-24 max-w-3xl text-lg leading-relaxed">
+        
+        <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-slate-800 dark:text-slate-100">UTANGULIZI WA KOZI</h2>
+            <p class="mb-6">
+                Karibu katika safari hii ya kipekee ya mafunzo iliyosanifiwa kumuibua mwanamke na kumrejeshea nafasi yake ya msingi katika familia, kanisa, na jamii. Kozi hii ya <strong>"Uwezo wa Mwanamke"</strong> si programu ya masomo tu, bali ni harakati ya mabadiliko ya kifikra na kiroho inayolenga kumwezesha kila mshiriki kutambua hazina iliyojificha ndani yake.
+            </p>
+        </section>
+
+        <blockquote class="border-l-4 border-teal-500 dark:border-accentTeal pl-6 my-10 italic text-xl text-slate-600 dark:text-slate-300">
+            "Mwanamke mwenye uwezo ni chanzo cha nuru kwa familia yake."
+        </blockquote>
+
+        <section class="mb-10">
+            <h3 class="text-xl md:text-2xl font-bold mb-4 text-slate-800 dark:text-slate-100">Hazina Iliyojificha</h3>
+            <p class="mb-6">
+                Mwanamke ameumbwa na uwezo wa kipekee wa kulea, kuongoza, na kuleta suluhu hata katika mazingira magumu. Hata hivyo, mara nyingi uwezo huu hufifishwa na changamoto za kijamii, ukosefu wa fursa, au kutojitambua. Kupitia kozi hii, tutaangazia maeneo mbalimbali:
+            </p>
+            <ul class="list-disc pl-6 space-y-3 mb-6">
+                <li>Kutambua thamani na utambulisho wa kiroho.</li>
+                <li>Uongozi na usimamizi wa rasilimali.</li>
+                <li>Kujenga uchumi thabiti na ujasiriamali.</li>
+                <li>Malezi bora na ushawishi katika jamii.</li>
+            </ul>
+        </section>
+
+        <section class="bg-slate-100 dark:bg-darkCard p-8 rounded-2xl border border-slate-200 dark:border-slate-700">
+            <h3 class="text-xl font-bold mb-3">Matarajio ya Mafunzo</h3>
+            <p>
+                Tunategemea kuwa mwisho wa mafunzo haya, kila mwanamke atatoka akiwa na ujasiri mpya, maono mapana, na mikakati thabiti ya kupiga hatua kuelekea mafanikio yake na ya wale wanaomzunguka.
+            </p>
+            <button class="mt-6 px-8 py-3 bg-teal-600 hover:bg-teal-500 text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg">
+                Jiunge na Kozi Sasa
+            </button>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-200 dark:bg-darkCard py-12 text-center text-slate-500 dark:text-slate-400">
+        <p>© 2026 Pastor Aloyce. Haki zote zimehifadhiwa.</p>
+    </footer>
+
+    <script>
+        // 1. Dark Mode Toggle
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        // 2. Font Customizer
+        function changeFont(fontClass) {
+            const article = document.getElementById('articleContent');
+            // Ondoa class zote za zamani za font
+            article.classList.remove('font-sans', 'font-serif', 'font-tnr', 'font-mono');
+            // Ongeza mpya
+            article.classList.add(fontClass);
+        }
+
+        // 3. Text Resizer
+        let currentSize = 1.125; // 1.125rem is text-lg
+        function changeFontSize(action) {
+            const article = document.getElementById('articleContent');
+            if (action === 'plus' && currentSize < 2) {
+                currentSize += 0.1;
+            } else if (action === 'minus' && currentSize > 0.8) {
+                currentSize -= 0.1;
+            }
+            article.style.fontSize = currentSize + 'rem';
+        }
+
+        // 4. Reading Progress Bar
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        };
+    </script>
+</body>
+</html>
